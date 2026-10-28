@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zomi-g2p"
+version = "0.1.0"
+description = "Grapheme-to-Phoneme conversion for the Zomi language, with IPA and ASCII output and six-tone support"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+dependencies = ["pyyaml"]
+
+[tool.setuptools.package-data]
+zomi_g2p = ["data/*.yaml", "data/*.csv", "data/*.pkl"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[project.scripts]
+zomi-g2p = "zomi_g2p.cli:main"
