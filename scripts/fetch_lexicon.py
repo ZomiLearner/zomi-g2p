@@ -34,6 +34,15 @@ def main() -> None:
     df = df[['word', 'syllables', 'tones']]
     df = df[~df['word'].isna()]
     # df = df[~df['tones'].isna()]
+    
+    # Validate expected columns.
+    header = df.columns
+    required = {"word", "syllables"}
+    missing = required - set(header)
+    if missing:
+        print(f"error: sheet missing columns: {sorted(missing)}", file=sys.stderr)
+        return 1
+    
     print(df.shape)
     
     output_path = DATA_DIR / "lexicon.csv"
