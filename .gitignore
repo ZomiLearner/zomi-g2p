@@ -49,6 +49,11 @@ Thumbs.db
 # Keep the packaged data/ folder tracked; only ignore local overrides
 *.local.csv
 *.local.yaml
-workspace
+workspace/tmp
 out.txt
 log.txt
+.env
+!.env.template
+
+# Build artifact
+src/zomi_g2p/data/*.pkl
