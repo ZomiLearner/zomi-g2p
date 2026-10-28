@@ -1,0 +1,212 @@
+# segments.yaml
+# Grapheme -> IPA / ASCII mappings for Zomi (Tedim-based).
+#
+# WARNING: This is a STARTING POINT inferred from Tedim phonology tables.
+# The exact orthography-to-phoneme correspondence must be validated against
+# an authoritative Zomi spelling/pronunciation reference before production use.
+#
+# Order does not matter here; lexicon.py sorts by grapheme length descending
+# so longest-match wins during conversion.
+#
+# Sources consulted:
+# - Tedim consonant/vowel inventory: /m, n, ŋ, p, pʰ, b, t, tʰ, d, k, ɡ, ʔ,
+#   f, v, s, z, x, h, tɕ, tɕʰ, l, lˀ/ and vowels /i, iː, u, uː, ɛ, ɛː, ɔ, ɔː, a, aː/
+#   plus diphthongs.
+# - Latin alphabet letters shown in Tedim chart: a b c ch d e f g h i k kh l m n
+#   ng o p ph r s t th u ua v w y z.
+
+segments:
+  # ------------------------------------------------------------------
+  # Consonants (single letters)
+  # ------------------------------------------------------------------
+  - grapheme: "p"
+    ipa: "p"
+    ascii: "p"
+  - grapheme: "b"
+    ipa: "b"
+    ascii: "b"
+  - grapheme: "t"
+    ipa: "t"
+    ascii: "t"
+  - grapheme: "d"
+    ipa: "d"
+    ascii: "d"
+  - grapheme: "k"
+    ipa: "k"
+    ascii: "k"
+  - grapheme: "g"
+    ipa: "ɡ"
+    ascii: "g"
+  - grapheme: "f"
+    ipa: "f"
+    ascii: "f"
+  - grapheme: "v"
+    ipa: "v"
+    ascii: "v"
+  - grapheme: "s"
+    ipa: "s"
+    ascii: "s"
+  - grapheme: "z"
+    ipa: "z"
+    ascii: "z"
+  - grapheme: "h"
+    ipa: "h"
+    ascii: "h"
+  - grapheme: "l"
+    ipa: "l"
+    ascii: "l"
+  - grapheme: "m"
+    ipa: "m"
+    ascii: "m"
+  - grapheme: "n"
+    ipa: "n"
+    ascii: "n"
+  - grapheme: "r"
+    ipa: "r"
+    ascii: "r"
+  # Approximants: /j, w/ are allophones of vowels /i̯, u̯/ within diphthongs.
+  # They are included as segments for orthographic completeness.
+  - grapheme: "w"
+    ipa: "w"
+    ascii: "w"
+  - grapheme: "y"
+    ipa: "j"
+    ascii: "y"
+
+  # ------------------------------------------------------------------
+  # Consonant digraphs (longest-match handles these before single letters)
+  # ------------------------------------------------------------------
+  - grapheme: "ph"
+    ipa: "pʰ"
+    ascii: "ph"
+  - grapheme: "th"
+    ipa: "tʰ"
+    ascii: "th"
+  - grapheme: "kh"
+    ipa: "kʰ"          # /x/ ~ [kʰ] free variation; x is the primary value
+    ascii: "kh"
+  - grapheme: "ng"
+    ipa: "ŋ"
+    ascii: "ng"
+  # Affricate /tɕ/: both "c" and "ch" represent the same underlying sound.
+  - grapheme: "c"
+    ipa: "tɕ"
+    ascii: "c"
+  - grapheme: "ch"
+    ipa: "tɕʰ"
+    ascii: "ch"
+  # Aspirated affricate: the chart lists "ch" but the phoneme inventory has
+  # /tɕʰ/. If your orthography distinguishes "ch" vs "chh" (or similar),
+  # add the aspirated form here. The current chart does not clearly show it.
+  # - grapheme: "chh"
+  #   ipa: "tɕʰ"
+  #   ascii: "chh"
+
+  # ------------------------------------------------------------------
+  # Vowels (short)
+  # ------------------------------------------------------------------
+  - grapheme: "a"
+    ipa: "a"
+    ascii: "a"
+  - grapheme: "e"
+    ipa: "ɛ"          # /ɛ/ may have closer allophone [e]
+    ascii: "e"
+  - grapheme: "i"
+    ipa: "i"
+    ascii: "i"
+  - grapheme: "u"
+    ipa: "u"
+    ascii: "u"
+  # Both graphemes represent the same phoneme /o/.
+  - grapheme: "o"
+    ipa: "o" # "oʊ"          # /ɔ/ may have closer allophone [o]
+    ascii: "o"
+  - grapheme: "ou"
+    ipa: "o" # "ou̯"
+    ascii: "ou" # "ou" # collapse in ASCII: no reason to preserve the orthographic distinction
+  
+
+  # ------------------------------------------------------------------
+  # Vowels (long) — orthographic convention needs validation.
+  # Option A: doubled vowels (aa, ee, ii, oo, uu). This is a common
+  # convention in related Chin languages. If your CSV uses a different
+  # convention (e.g., macrons, or no length marking), adjust these entries.
+  # ------------------------------------------------------------------
+  - grapheme: "aa"
+    ipa: "aː"
+    ascii: "aa"
+  - grapheme: "ee"
+    ipa: "ɛː"
+    ascii: "ee"
+  - grapheme: "ii"
+    ipa: "iː"
+    ascii: "ii"
+  - grapheme: "oo"
+    ipa: "ɔː"
+    ascii: "oo"
+  - grapheme: "uu"
+    ipa: "uː"
+    ascii: "uu"
+
+  # ------------------------------------------------------------------
+  # Diphthongs shown in Tedim vowel table.
+  # Orthographic spellings must be confirmed against the lexicon CSV.
+  # ------------------------------------------------------------------
+  - grapheme: "ia"
+    ipa: "i̯a"
+    ascii: "ia"
+  - grapheme: "iu"
+    ipa: "iu̯"
+    ascii: "iu"
+  - grapheme: "ua"
+    ipa: "u̯a"
+    ascii: "ua"
+  - grapheme: "ui"
+    ipa: "ui̯"
+    ascii: "ui"
+  - grapheme: "ei"
+    ipa: "ei̯"
+    ascii: "ei"
+  - grapheme: "eu"
+    ipa: "eu̯"
+    ascii: "eu"
+  - grapheme: "oi"
+    ipa: "ɔi̯"
+    ascii: "oi"
+  - grapheme: "ai"
+    ipa: "ai̯"
+    ascii: "ai"
+  - grapheme: "au"
+    ipa: "au̯"
+    ascii: "au"
+
+  # Long diphthongs (from the vowel table: aːi̯, aːu̯, ɛːi̯, ɛːu̯, ɔːi̯, uːi̯).
+  # Spellings need confirmation.
+  - grapheme: "aai"
+    ipa: "aːi̯"
+    ascii: "aai"
+  - grapheme: "aau"
+    ipa: "aːu̯"
+    ascii: "aau"
+  - grapheme: "eei"
+    ipa: "ɛːi̯"
+    ascii: "eei"
+  - grapheme: "eeu"
+    ipa: "ɛːu̯"
+    ascii: "eeu"
+  - grapheme: "ooi"
+    ipa: "ɔːi̯"
+    ascii: "ooi"
+  - grapheme: "uui"
+    ipa: "uːi̯"
+    ascii: "uui"
+
+  # ------------------------------------------------------------------
+  # Glottal stop / apostrophe
+  # The low-short tone (code 10) carries a glottal stop feature.
+  # tones.yaml appends ʔ for IPA. If the orthography uses an apostrophe
+  # or final "h" for glottal stop, map it here.
+  # ------------------------------------------------------------------
+  - grapheme: "'"
+    ipa: "ʔ"
+    ascii: "q"

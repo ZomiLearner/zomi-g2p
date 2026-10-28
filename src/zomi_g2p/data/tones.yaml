@@ -1,0 +1,25 @@
+tones:
+  - name: mid-short
+    code: "30"
+    ipa_mark: "˧"
+    ascii_mark: "3"
+  - name: low-short
+    code: "10"
+    ipa_mark: "˩ʔ"
+    ascii_mark: "1q"
+  - name: high-short
+    code: "50"
+    ipa_mark: "˥"
+    ascii_mark: "5"
+  - name: mid-long
+    code: "33"
+    ipa_mark: "˧ː"
+    ascii_mark: "33"
+  - name: rising
+    code: "35"
+    ipa_mark: "˧˥"
+    ascii_mark: "35"
+  - name: falling
+    code: "31"
+    ipa_mark: "˧˩"
+    ascii_mark: "31"
