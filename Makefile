@@ -9,8 +9,20 @@ tree:
 		echo "Error: 'tree' command is not installed."; \
 	fi
 
-fetch_lexicon:
+fetch-lexicon:
 	python3 scripts/fetch_lexicon.py # --output src/zomi_g2p/data/lexicon.csv
+
+.PHONY: build-pickle
+build-pickle:
+	python scripts/build_pickle.py
+
+.PHONY: release-check
+release-check:
+	python scripts/build_pickle.py
+	pytest -q
+	python -m build
+	twine check dist/*
+	unzip -l dist/*.whl | grep -E "lexicon\.(csv|pkl)|segments\.yaml|tones\.yaml"
 
 .PHONY: test_pipeline
 test_pipeline:

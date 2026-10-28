@@ -294,14 +294,33 @@ pytest
 The test suite covers the lexicon loader, the converter, and the packaged
 data files. See `tests/` for details.
 
+### Configuration
+
+Maintainer scripts read configuration from environment variables. Copy
+the template and fill in the values:
+
+```bash
+cp .env.template .env
+# edit .env — set ZOMI_LEXICON_SHEET_ID, etc.
+```
+
+`.env` is gitignored. Only `.env.template` is committed.
+
 ### Refreshing the packaged lexicon
 
-The maintainer utility `scripts/fetch_lexicon.py` regenerates
-`src/zomi_g2p/data/lexicon.csv`. It is **not** installed with the package
+The lexicon is maintained in a Google Sheet and snapshotted to
+src/zomi_g2p/data/lexicon.csv. To refresh it, run
+make fetch-lexicon (requires network access), review the CSV diff,
+and commit the result. The lexicon.pkl is a build artifact and is
+not committed — CI regenerates it from the CSV before building
+the wheel. This script is **not** installed with the package
 and is only used when updating the bundled data:
 
 ```bash
 make fetch-lexicon
+# then to build pickle locally 
+# build_pickle.py converts (CSV → PKL)
+make build-pickle
 ```
 
 ---
