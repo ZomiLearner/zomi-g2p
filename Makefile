@@ -1,6 +1,6 @@
 # |workspace|out.txt|log.txt|src/*.egg-info|htmlcov
 .PHONY: tree
-EXCLUDE ?= node_modules|.git|__pycache__|workspace|dist|htmlcov|out.txt|log.txt
+EXCLUDE ?= node_modules|.git|__pycache__|dist|*.egg-info|htmlcov|out.txt|log.txt|tmp
 
 tree:
 	@if command -v tree > /dev/null; then \
@@ -65,16 +65,16 @@ try-cli:
 	zomi-g2p convert ankham
 	zomi-g2p convert ankham --output ascii
 	zomi-g2p -vv convert ankham
-	zomi-g2p -q batch workspace/words.txt
+	zomi-g2p -q batch tests/data/words.txt
 	zomi-g2p info -v
 	zomi-g2p -q convert unknownword
 
 .PHONY: batch
 batch:
-	zomi-g2p -q batch workspace/words.txt --json
+	zomi-g2p -q batch tests/data/words.txt --json
 
 generate_lexicon:
-	python scripts/generate_lexicon.py workspace/words.txt > generated.csv
+	python scripts/generate_lexicon.py tests/data/words.txt > generated.csv
 ####### To check if the package-data + importlib.resources are correctly wired #######
 
 # python -m venv /tmp/zg-test

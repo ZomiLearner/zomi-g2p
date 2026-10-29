@@ -50,6 +50,7 @@ Thumbs.db
 *.local.csv
 *.local.yaml
 workspace/tmp
+workspace/todo
 out.txt
 log.txt
 .env
