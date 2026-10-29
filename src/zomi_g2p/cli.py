@@ -20,6 +20,8 @@ import logging
 import sys
 from pathlib import Path
 
+from .version import __version__
+
 from .converter import ZomiG2P
 from .exceptions import ZomiG2PError
 from .lexicon import load_default_lexicon, load_lexicon_from_dir
@@ -228,6 +230,8 @@ def build_parser() -> argparse.ArgumentParser:
         prog="zomi-g2p",
         description="Grapheme-to-Phoneme conversion for the Zomi language.",
     )
+    parser.add_argument("--version", action="version",
+                        version=f"%(prog)s {__version__}")
     parser.add_argument("-v", "--verbose", action="count", default=0,
                         help="increase logging verbosity (-v: INFO, -vv: DEBUG)")
     parser.add_argument("-q", "--quiet", action="store_true",

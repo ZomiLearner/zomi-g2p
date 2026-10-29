@@ -60,6 +60,7 @@ from .utils.helpers import (
 from .version import __version__
 
 __all__ = [
+    "__version__",
     # Core API
     "ZomiG2P",
     "ConversionResult",
