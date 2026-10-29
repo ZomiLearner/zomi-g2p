@@ -1,4 +1,0 @@
-- tone based on previous/next word in a sentence e.g. lawng kei in. [here 'lawng' is most likely verb and it should be rising tone (35), instead of mid-long (33)]
-- the words lexicon should grow as it is as the primary disembiguator, but it should refer to root syllables lexicon for unknown/new syllables 
-- this [ConversionResult(word='ankham', syllables=('an', 'kham'), tones=('50', '50'), phonemes=('an˥', 'kʰam˥'), output='ipa', with_tone=True)] should include tone_source=base_syllable_prediction/lexicon/model_prediction
-- Capability for loan words or non-Zomi words 
