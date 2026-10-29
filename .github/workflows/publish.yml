@@ -89,6 +89,22 @@ jobs:
         with:
           name: dist
           path: dist/
+      
+      - name: Extract release notes from CHANGELOG
+        id: notes
+        run: |
+          python - <<'EOF'
+          import re, os, pathlib
+          tag = os.environ["GITHUB_REF_NAME"].lstrip("v")
+          text = pathlib.Path("CHANGELOG.md").read_text(encoding="utf-8")
+          m = re.search(
+              rf"## \[{re.escape(tag)}\][^\n]*\n(.*?)(?=\n## \[|\Z)",
+              text, re.S,
+          )
+          body = m.group(1).strip() if m else f"See [CHANGELOG.md](CHANGELOG.md) for v{tag}."
+          pathlib.Path("release-notes.md").write_text(body, encoding="utf-8")
+          print(f"extracted {len(body)} chars for v{tag}")
+          EOF
 
       - name: Upload artifacts to GitHub Release
         uses: softprops/action-gh-release@v2
@@ -96,7 +112,7 @@ jobs:
           files: |
             dist/*.whl
             dist/*.tar.gz
-          generate_release_notes: true
+          body_path: release-notes.md
 
       - name: Summary
         if: always()
@@ -111,3 +127,5 @@ jobs:
           echo "Files:"
           ls -la dist/
           echo "=========================================="
+      
+      
