@@ -84,6 +84,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download dist artifacts
         uses: actions/download-artifact@v4
         with:
@@ -96,7 +98,10 @@ jobs:
           python - <<'EOF'
           import re, os, pathlib
           tag = os.environ["GITHUB_REF_NAME"].lstrip("v")
-          text = pathlib.Path("CHANGELOG.md").read_text(encoding="utf-8")
+          changelog = pathlib.Path("CHANGELOG.md")
+          if not changelog.is_file():
+              raise SystemExit("CHANGELOG.md not found; did checkout run?")
+          text = changelog.read_text(encoding="utf-8")
           m = re.search(
               rf"## \[{re.escape(tag)}\][^\n]*\n(.*?)(?=\n## \[|\Z)",
               text, re.S,
