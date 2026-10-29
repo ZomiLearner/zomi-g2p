@@ -12,6 +12,12 @@ tones from spelling. Tones come from a lexicon, which is the authoritative
 source. The packaged lexicon is a starter set; you can supply your own
 via `load_lexicon_from_dir()`.
 
+## Community
+
+- [Contributing guide](CONTRIBUTING.md)
+- [Code of conduct](CODE_OF_CONDUCT.md)
+- [Changelog](CHANGELOG.md)
+
 ---
 
 ## Installation
@@ -285,7 +291,7 @@ file. This catches most data-entry mistakes before conversion begins.
 ## Development
 
 ```bash
-git clone https://github.com/<you>/zomi-g2p.git
+git clone https://github.com/ZomiLearner/zomi-g2p.git
 cd zomi-g2p
 pip install -e ".[dev]"
 pytest
@@ -337,39 +343,10 @@ Built for the Zomi language community. Tone values and phoneme mappings
 follow published Tedim (Zomi) phonological descriptions; corrections and
 contributions are welcome via issues and pull requests.
 
-### Notes on this README
+## Contact
 
-**1. The data-format sections are the most important part**
-
-Since the bundled lexicon is a starter set, most real users will bring their own `lexicon.csv`. The README documents all three file formats with concrete examples, and explains the validation rules the loader enforces. Without this, users will hit `DataValidationError` and not know why.
-
-**2. Polyphones get their own section**
-
-The `sense=` parameter is the least obvious part of the API. The example shows both the success path and the `AmbiguousWordError` with its structured attributes, so users can write `except AmbiguousWordError as exc: retry with exc.senses[0]` if they want a fallback.
-
-**3. The six-tone table is repeated from `tones.yaml`**
-
-Having it in the README means users can eyeball a lexicon row and know what `30-30` means without opening a YAML file. If you change tone letters in `tones.yaml`, update the table too — or better, note in the README that `tones.yaml` is the source of truth.
-
-**4. "Using your own lexicon" is prominent**
-
-It comes before error handling and development, because for a real TTS pipeline, supplying your own data is the primary workflow. The bundled lexicon is explicitly described as a starter set — no surprises about its size.
-
-**5. Error hierarchy is shown as a tree**
-
-Users can scan it and immediately see what to catch. `ZomiG2PError` for coarse handling, subclasses for fine.
-
-**6. Development section documents `scripts/fetch_lexicon.py`**
-
-Since you decided to commit the script, the README says what it does, that it's maintainer-only, and how to invoke it via `make fetch-lexicon`. This matches the `Makefile` target.
-
-**7. No false claims about dialect coverage**
-
-The README says "Zomi language" and "Tedim (Zomi) phonological descriptions" in acknowledgements. If your lexicon is specifically Tedim, consider changing "Zomi language" to "Tedim (a Zomi variety)" in the header and description — precision here avoids users of other Zomi varieties expecting their orthography to work. If the lexicon covers multiple varieties, say so explicitly and note how they're distinguished (e.g., separate `sense` values or separate data files).
-
-**8. One thing to fix before publishing**
-
-Replace `<you>` in the clone URL and `<your name>` in `LICENSE` with actual values. Both are placeholders that shouldn't ship.
+Maintained by [@Vum](https://github.com/VumGualnam) [@ZomiNLP](https://github.com/ZomiNLP) — reach out via GitHub
+or email at [ZomiNLP](mailto:zomi.language.translator@gmail.com).
 
 ## Project Structure
 

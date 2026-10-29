@@ -7,6 +7,14 @@ name = "zomi-g2p"
 version = "0.1.0"
 description = "Grapheme-to-Phoneme conversion for the Zomi language, with IPA and ASCII output and six-tone support"
 readme = "README.md"
+authors = [
+    { name = "Zomi Language Translator", email = "zomi.language.translator@gmail.com" },
+    { name = "Juna", email = "juna190825@gmail.com" },
+]
+maintainers = [
+    { name = "Zomi Language Translator", email = "zomi.language.translator@gmail.com" },
+    { name = "Juna", email = "juna190825@gmail.com" },
+]
 requires-python = ">=3.9"
 license = { file = "LICENSE" }
 dependencies = ["pyyaml"]
@@ -17,6 +25,12 @@ zomi_g2p = ["data/*.yaml", "data/*.csv", "data/*.pkl"]
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+
+[project.urls]
+Homepage = "https://github.com/ZomiLearner/zomi-g2p"
+Repository = "https://github.com/ZomiLearner/zomi-g2p"
+Issues = "https://github.com/ZomiLearner/zomi-g2p/issues"
+Changelog = "https://github.com/ZomiLearner/zomi-g2p/blob/main/CHANGELOG.md"
 
 [project.scripts]
 zomi-g2p = "zomi_g2p.cli:main"
