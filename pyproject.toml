@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "zomi-g2p"
-version = "0.1.1"
+version = "0.1.2"
 description = "Grapheme-to-Phoneme conversion for the Zomi language, with IPA and ASCII output and six-tone support"
 readme = "README.md"
 authors = [
